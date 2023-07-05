@@ -1,0 +1,56 @@
+<div class="">
+
+    <div class="slider">
+        <h1>Boutique</h1>
+        <p>
+            Lorem ipsum dolor sit amet, 
+            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+    </div>
+
+    <div class="items row main bg-body-secondary">
+        <div class="col side-bar">
+            <div class="filter">
+                <h5 >Filters</h5>
+                <button class="btn-link btn">Clear Filter</button>
+            </div>
+            <div class="radio-box">
+                <h4>Categories</h4>
+                <div class="form-check" *ngFor="let checkbox of checkboxes">
+                    <label  class="form-check-label">
+                        {{ checkbox.label }}
+                    </label>
+                    <input type="checkbox" class="form-check-input" [(ngModel)]="checkbox.checked" (change)="onCheckboxChange(checkbox)">
+                     
+                  </div>
+            </div>
+        </div>
+        <div class="col-8 ">
+            <div class="p-5 text-lg-end">filetring</div>
+            <div class="container ">
+                <div class="row gap-1">
+                  <div class="col m-2" *ngFor="let item of items.slice(0, 3)">
+                    <div class="card">
+                      <!-- Content for the first row -->
+                      <img [src]="item.img" class="card-img-top" alt="Product Image">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ item.desc }}</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row gap-1">
+                  <div class="col m-2" *ngFor="let item of items.slice(3)">
+                    <div class="card">
+                      <!-- Content for the second row -->
+                      <img [src]="item.img" class="card-img-top" alt="Product Image">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ item.desc }}</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>         
+        </div>
+    </div>
+</div>

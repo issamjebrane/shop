@@ -1,0 +1,41 @@
+.slider{
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+p,h1{
+    width: 50%;
+}
+h5{
+   margin: 0;
+}
+.main{
+    padding: 50px;
+}
+.side-bar{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+.filter {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+.clear {
+    border: none;
+    background-color: transparent;
+    text-decoration: underline;
+    opacity: 0.8;
+    cursor: pointer;
+}
+.btn{
+    color: gray;
+    opacity: 60%;
+}
+  

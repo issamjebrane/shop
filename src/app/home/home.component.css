@@ -1,0 +1,18 @@
+.slider, .arrivage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 40px;
+}
+.slider{
+height: 400px;
+padding: 50px;
+
+}
+.arrivage{
+    height: 673px;
+}
+.items:nth-child(1){
+    background-color: black;
+}
