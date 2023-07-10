@@ -39,3 +39,26 @@ h5{
     opacity: 60%;
 }
   
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-toggle {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    color: #495057;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 10px;
+    row-gap: 15px;
+    grid-auto-rows: minmax(100px, auto);
+  }
+  .product{
+    cursor: pointer;
+  }

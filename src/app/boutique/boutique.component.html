@@ -1,5 +1,4 @@
 <div class="">
-
     <div class="slider">
         <h1>Boutique</h1>
         <p>
@@ -26,12 +25,22 @@
             </div>
         </div>
         <div class="col-8 ">
-            <div class="p-5 text-lg-end">filetring</div>
-            <div class="container ">
-                <div class="row gap-1">
+            <div class="p-5 text-lg-end"> 
+              <div class="dropdown">
+                <button class="dropdown-toggle" type="button" >
+                  Select an Option
+                </button>
+                <ul class="dropdown-menu" >
+                  <li class="dropdown-item" >
+                    
+                  </li>
+                </ul>
+              </div>                
+            </div>
+            <div class="wrapper">
+                <!-- <div class="row gap-1">
                   <div class="col m-2" *ngFor="let item of items.slice(0, 3)">
-                    <div class="card">
-                      <!-- Content for the first row -->
+                    <div class="card" (click)="handleItem(item.id)">
                       <img [src]="item.img" class="card-img-top" alt="Product Image">
                       <div class="card-body">
                         <h5 class="card-title">{{ item.desc }}</h5>
@@ -39,10 +48,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="row gap-1">
+                <div class="row gap-1 ">
                   <div class="col m-2" *ngFor="let item of items.slice(3)">
-                    <div class="card">
-                      <!-- Content for the second row -->
+                    <div class="card" (click)="handleItem(item.id)">
                       <img [src]="item.img" class="card-img-top" alt="Product Image">
                       <div class="card-body">
                         <h5 class="card-title">{{ item.desc }}</h5>
@@ -50,7 +58,15 @@
                     </div>
                   </div>
                 </div>
-              </div>         
+              </div>          -->
+              <div *ngFor="let item of items">
+                <div class="product card" (click)="navigateToRoute(item.id)">
+                  <img [src]="item.img" class="card-img-top" alt="Product Image">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ item.desc }}</h5>
+                  </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -8,6 +8,12 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { BoutiqueComponent } from './boutique/boutique.component';
 import { FormsModule } from '@angular/forms';
+import { ProductComponent } from './product/product.component';
+import { PanierComponent } from './panier/panier.component';
+import { AuthModule } from './auth/auth.module';
+import { AuthRoutingModule } from './auth/auth-routing.module';
+import { PagesLayoutComponent } from './layouts/pages-layout/pages-layout.component';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 
 @NgModule({
   declarations: [
@@ -15,11 +21,16 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    BoutiqueComponent
+    BoutiqueComponent,
+    ProductComponent,
+    PanierComponent,
+    PagesLayoutComponent,
+    AuthLayoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AuthRoutingModule,
     MatIconModule,
     FormsModule
   ],

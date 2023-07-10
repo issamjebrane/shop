@@ -1,5 +1,11 @@
 .toolbar {
     height: 60px;
-    background: #7AC7F3;
-    
+    background: #7AC7F3;   
+}
+.panier{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
 }

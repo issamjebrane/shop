@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { items } from 'src/types/items';
+import {  Router } from '@angular/router';
+import {  product } from 'src/types/items';
 
 @Component({
   selector: 'app-boutique',
@@ -7,47 +8,25 @@ import { items } from 'src/types/items';
   styleUrls: ['./boutique.component.css']
 })
 export class BoutiqueComponent {
+  
+  items = product
+
   checkboxes=[
     { checked: false, label: 'Jackets' },
     { checked: false, label: 'Sweatshirts & Hoodies' },
     { checked: false, label: 'T-Shirts' }
   ]
-  items:items[]=[
-    {
-    id:1,
-    img:'assets/nike-black.jpeg',
-    desc:'produit 1'
-  },
-    {
-    id:2,
-    img:'assets/nike-red.jpeg',
-    desc:'produit 2'
-  },
-    {
-    id:3,
-    img:'assets/nike-black.jpeg',
-    desc:'produit 3'
-  },
-    {
-    id:4,
-    img:'assets/nike-black.jpeg',
-    desc:'produit 4'
-  },
-    {
-    id:5,
-    img:'assets/nike-black.jpeg',
-    desc:'produit 5'
-  },
-    {
-    id:6,
-    img:'assets/nike-black.jpeg',
-    desc:'produit 6'
+
+  constructor(private router :Router){
+
   }
-]
 
 onCheckboxChange(checkbox: any) {
   console.log('Checkbox:', checkbox.label);
   console.log('Checked:', checkbox.checked);
 }
 
+navigateToRoute(id:number){
+    this.router.navigate(['/product',id])
+  }
 }

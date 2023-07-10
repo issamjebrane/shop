@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  
+ 
 
+  constructor(protected ProductsService:ProductsService){
+    
+  }
+
+  
 }
