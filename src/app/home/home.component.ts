@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { items } from 'src/types/items';
 
 @Component({
@@ -24,4 +25,10 @@ export class HomeComponent {
     desc:'produit 3'
   },
 ]
+
+constructor(private router:Router){}
+
+navigateToRoute(id:number){
+  this.router.navigate(['/product',id])
+}
 }

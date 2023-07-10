@@ -9,13 +9,15 @@
     <div class="bg-secondary arrivage">
         <h1>Nos derniers arrivages</h1>
         <span>Shop</span>
-        <div class="row gap-5 items">
-            <div class="card " style="width: 226px;height: 335px;padding: 10px;" *ngFor="let item of items" >
-                <img [src]="item.img"  alt="...">
+        <div class="wrapper">
+            <div *ngFor="let item of items">
+              <div class="product card" (click)="navigateToRoute(item.id)">
+                <img [src]="item.img" class="card-img-top" alt="Product Image">
                 <div class="card-body">
-                  <h5 class="card-title">{{item.desc}}</h5>
+                  <h5 class="card-title">{{ item.desc }}</h5>
                 </div>
-            </div>
+              </div>
+          </div>
         </div>
     </div>
 </div>

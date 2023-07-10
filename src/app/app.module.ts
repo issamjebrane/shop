@@ -14,6 +14,7 @@ import { AuthModule } from './auth/auth.module';
 import { AuthRoutingModule } from './auth/auth-routing.module';
 import { PagesLayoutComponent } from './layouts/pages-layout/pages-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
     AppRoutingModule,
     AuthRoutingModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

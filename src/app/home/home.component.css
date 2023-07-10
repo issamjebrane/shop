@@ -16,3 +16,14 @@ padding: 50px;
 .items:nth-child(1){
     background-color: black;
 }
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 10px;
+    row-gap: 15px;
+    grid-auto-rows: minmax(100px, auto);
+    padding: 0 20px;
+  }
+  .product{
+    cursor: pointer;
+  }

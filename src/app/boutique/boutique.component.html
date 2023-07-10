@@ -38,27 +38,6 @@
               </div>                
             </div>
             <div class="wrapper">
-                <!-- <div class="row gap-1">
-                  <div class="col m-2" *ngFor="let item of items.slice(0, 3)">
-                    <div class="card" (click)="handleItem(item.id)">
-                      <img [src]="item.img" class="card-img-top" alt="Product Image">
-                      <div class="card-body">
-                        <h5 class="card-title">{{ item.desc }}</h5>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row gap-1 ">
-                  <div class="col m-2" *ngFor="let item of items.slice(3)">
-                    <div class="card" (click)="handleItem(item.id)">
-                      <img [src]="item.img" class="card-img-top" alt="Product Image">
-                      <div class="card-body">
-                        <h5 class="card-title">{{ item.desc }}</h5>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>          -->
               <div *ngFor="let item of items">
                 <div class="product card" (click)="navigateToRoute(item.id)">
                   <img [src]="item.img" class="card-img-top" alt="Product Image">

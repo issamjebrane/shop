@@ -4,22 +4,29 @@ import { HomeComponent } from './home/home.component';
 import { BoutiqueComponent } from './boutique/boutique.component';
 import { ProductComponent } from './product/product.component';
 import { PanierComponent } from './panier/panier.component';
+import { PagesLayoutComponent } from './layouts/pages-layout/pages-layout.component';
 
 const routes: Routes = [
   {
     path:'',
-    component:HomeComponent
-  },
-  {
-    path:'boutique',
-    component:BoutiqueComponent
-  },{
-    path:'product/:id',
-    component:ProductComponent
-  },
-  {
-    path:'panier',
-    component:PanierComponent
+    component:PagesLayoutComponent,
+    children:[
+      {
+        path:'',
+        component:HomeComponent
+      },
+      {
+        path:'boutique',
+        component:BoutiqueComponent
+      },{
+        path:'product/:id',
+        component:ProductComponent
+      },
+      {
+        path:'panier',
+        component:PanierComponent
+      }
+    ]
   }
   
 ];
