@@ -7,11 +7,11 @@
         </p>
     </div>
 
-    <div class="items row main bg-body-secondary">
-        <div class="col side-bar">
+    <div class="items main bg-body-secondary">
+        <div class=" side-bar">
             <div class="filter">
                 <h5 >Filters</h5>
-                <button class="btn-link btn">Clear Filter</button>
+                <button class="btn-link btn" (click)="clearFilter()">Clear Filter</button>
             </div>
             <div class="radio-box">
                 <h4>Categories</h4>
@@ -19,30 +19,29 @@
                     <label  class="form-check-label">
                         {{ checkbox.label }}
                     </label>
-                    <input type="checkbox" class="form-check-input" [(ngModel)]="checkbox.checked" (change)="onCheckboxChange(checkbox)">
-                     
-                  </div>
+                    <input type="checkbox" class="form-check-input" [(ngModel)]="checkbox.checked" (change)="onCheckboxChange()">
+                </div>
             </div>
         </div>
-        <div class="col-8 ">
-            <div class="p-5 text-lg-end"> 
-              <div class="dropdown">
-                <button class="dropdown-toggle" type="button" >
-                  Select an Option
-                </button>
-                <ul class="dropdown-menu" >
-                  <li class="dropdown-item" >
-                    
-                  </li>
+        <div class="produit">
+            <div class="trier-par"> 
+              <li class="nav-item dropdown">
+                <button class="link nav-link" (click)="showDropdown()">Trier par <b>Price    </b> <i class="arrow down"></i></button>
+                <ul [ngClass]="{'dropdownMenu': true, 'showedMenu': isDropdown}">
+                    <!-- this "#date" is a way of referencing to an element on the template -->
+                    <li><button value="date" class="dropdown-item" (click)="handleTrier(date.value)" #date>Par date</button></li>
+                    <li><button value="categorie" class="dropdown-item" (click)="handleTrier(categorie.value)" #categorie>Par categorie</button></li>
+                    <li><button value="brand" class="dropdown-item" (click)="handleTrier(brand.value)" #brand>Par brand</button></li>
                 </ul>
-              </div>                
+            </li>               
             </div>
             <div class="wrapper">
-              <div *ngFor="let item of items">
+              <div *ngFor="let item of produits">
                 <div class="product card" (click)="navigateToRoute(item.id)">
-                  <img [src]="item.img" class="card-img-top" alt="Product Image">
+                  <img [src]="item.image" class="card-img-top image" alt="Product Image">
                   <div class="card-body">
-                    <h5 class="card-title">{{ item.desc }}</h5>
+                    <h6 class="card-title">{{ item.description }}</h6>
+                    <span class="text-primary">{{item.prix}}$</span>
                   </div>
                 </div>
             </div>

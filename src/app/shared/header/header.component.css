@@ -35,10 +35,31 @@
     transform: translateY(-10px);
     transition: opacity 0.15s ease-in-out,transform 0.15s ease-in-out;
 }
-
+.dropdownMenu > *{
+    cursor: pointer;
+}
 
 .showedMenu{
     opacity: 1;
     transform: translateY(10px);
     pointer-events: visible;
+}
+.search::placeholder,
+.search{
+    color: white;
+}
+
+.connexion{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+.logged{
+    
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: black;
+    padding: 5px 10px;
+    color: white;
 }

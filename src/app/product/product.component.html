@@ -1,13 +1,13 @@
 <div class="wrapper">
   <div class="product-title">
-    <h1>{{item.desc}}</h1>
+    <h1>{{produit?.description}}</h1>
   </div>
   <div class="product">
-    <div class="image">
-        <img [src]="item.img" alt="">
+    <div class="image-container">
+        <img [src]="produit?.image" alt="" class="image">
     </div>
     <div class="desc">
-        <h4>{{item.desc}}</h4>
+        <h4>{{produit?.description}}</h4>
         <span>$99</span>
         <p>Lorem ipsum dolor sit amet, 
         consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

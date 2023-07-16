@@ -1,33 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { items } from 'src/types/items';
+import {  produit } from 'src/types/produit.type';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
-  items:items[]=[
-    {
-    id:1,
-    img:'assets/nike-black.jpeg',
-    desc:'produit 1'
-  },
-    {
-    id:2,
-    img:'assets/nike-red.jpeg',
-    desc:'produit 2'
-  },
-    {
-    id:3,
-    img:'assets/nike-black.jpeg',
-    desc:'produit 3'
-  },
-]
+export class HomeComponent implements OnInit{
+produits!:produit[]
 
-constructor(private router:Router){}
+constructor(private router:Router,private productsService: ProductsService){}
 
+ngOnInit() {
+  this.getProduits();
+}
+
+getProduits() {
+  this.productsService.getProduits().subscribe(
+    (data:produit[]) => {
+      this.produits = data.slice(0,3);
+      this.produits.map(produit=>{
+      })
+    },
+    (error: any) => {
+      console.error(error);
+    }
+  );
+}
 navigateToRoute(id:number){
   this.router.navigate(['/product',id])
 }

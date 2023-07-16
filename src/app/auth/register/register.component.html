@@ -1,13 +1,17 @@
 <div class="container">
     <div class="register-box">
-      <h1>Register</h1>
-      <form>
-        <input type="text" placeholder="UserName" required>
-        <input type="email" placeholder="Email" required>
-        <input type="password" placeholder="Password" required>
-        <input type="password" placeholder="Confirm Password" required>
-        <button type="submit">Register</button>
+      <form [formGroup]="userForm">
+        <h1>Register</h1>
+        <input type="text" placeholder="First Name" formControlName="nom">
+        <input type="text" placeholder="Last Name" formControlName="prenom">
+        <input type="email" placeholder="Email" formControlName="email">
+        <input type="text" placeholder="Phone Number" formControlName="numTel">
+        <div *ngIf="userForm.get('numTel')?.errors?.['pattern']" class="text-bg-danger">
+          Please enter a valid phone number with 1 to 10 digits.
+        </div>   
+        <input type="password" placeholder="Password" formControlName="password">
+        <button type="submit" [disabled]="!userForm.valid" (click)="register()">Register</button>
+        <p class="forgot" (click)="navigateLogin()">Already have an account? <b>Log In</b></p>
       </form>
-      <p class="forgot" (click)="navigateLogin()">Already have an account? <b>Log In</b></p>
     </div>
   </div>

@@ -1,0 +1,8 @@
+export type produit ={
+    id : number;
+    ref : string;
+    type : string;
+    desc: string;
+    prix : number;
+    image : string;
+}

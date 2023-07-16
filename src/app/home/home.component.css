@@ -22,8 +22,16 @@ padding: 50px;
     column-gap: 10px;
     row-gap: 15px;
     grid-auto-rows: minmax(100px, auto);
-    padding: 0 20px;
+    padding: 0  100px  0 100px;
+    max-height: 400px;
   }
+
   .product{
     cursor: pointer;
   }
+  .image{
+    aspect-ratio: 3/2;
+    object-fit: contain;
+  }
+
+  

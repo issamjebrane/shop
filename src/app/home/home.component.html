@@ -10,11 +10,12 @@
         <h1>Nos derniers arrivages</h1>
         <span>Shop</span>
         <div class="wrapper">
-            <div *ngFor="let item of items">
+            <div *ngFor="let item of produits">
               <div class="product card" (click)="navigateToRoute(item.id)">
-                <img [src]="item.img" class="card-img-top" alt="Product Image">
+                <img [src]="item.image" class="card-img-top image" alt="Product Image">
                 <div class="card-body">
-                  <h5 class="card-title">{{ item.desc }}</h5>
+                  <h5 class="card-title">{{ item.description }}</h5>
+                  <span class="text-primary">{{item.prix}}$</span>
                 </div>
               </div>
           </div>

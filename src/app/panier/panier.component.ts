@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { product } from 'src/types/items';
 
 @Component({
   selector: 'app-panier',
@@ -8,5 +7,5 @@ import { product } from 'src/types/items';
 })
 export class PanierComponent {
 
-  produits=product.slice(0,2);
+  // produits=produits.slice(0,2);
 }

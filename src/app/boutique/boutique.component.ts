@@ -1,32 +1,73 @@
-import { Component } from '@angular/core';
-import {  Router } from '@angular/router';
-import {  product } from 'src/types/items';
+import { Component, OnInit, inject } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ProductsService } from '../services/products.service';
+import { produit } from 'src/types/produit.type';
 
 @Component({
   selector: 'app-boutique',
   templateUrl: './boutique.component.html',
   styleUrls: ['./boutique.component.css']
 })
-export class BoutiqueComponent {
+export class BoutiqueComponent implements OnInit{
   
-  items = product
+  produits!:produit[]
+  isDropdown:boolean=false
 
   checkboxes=[
-    { checked: false, label: 'Jackets' },
-    { checked: false, label: 'Sweatshirts & Hoodies' },
-    { checked: false, label: 'T-Shirts' }
+    { checked: false, label: 'phone' },
+    { checked: false, label: 'tv' },
+    { checked: false, label: 'speaker' }
   ]
 
-  constructor(private router :Router){
+  constructor(private router :Router, private produitService : ProductsService
+    ){
+   
+  }
+ 
 
+  ngOnInit() {
+    this.getProduits();
+  }
+ 
+
+  getProduits() {
+    this.produitService.getProduits().subscribe(
+      (data:produit[]) => {
+        this.produits = data;
+        this.produits.map(produit=>{
+        })
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
   }
 
-onCheckboxChange(checkbox: any) {
-  console.log('Checkbox:', checkbox.label);
-  console.log('Checked:', checkbox.checked);
-}
+  onCheckboxChange() {
+    const checked  = this.checkboxes.filter((checkbox)=>{
+      return checkbox.checked==true
+    })
+    const labels = checked.map(checked=>{
+      return checked.label
+    })
+      this.produitService.filter(labels).subscribe((response:produit[])=>{
+        this.produits=response
+     })
+  
+  }
 
-navigateToRoute(id:number){
+  navigateToRoute(id:number){
     this.router.navigate(['/product',id])
+  }
+
+  showDropdown(){
+    this.isDropdown = !this.isDropdown
+  }
+  handleTrier(value:string){
+    this.produitService.trier(value)
+  }
+
+  clearFilter(){
+    window.location.reload()
   }
 }
