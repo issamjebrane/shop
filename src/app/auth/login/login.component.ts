@@ -41,7 +41,8 @@ export class LoginComponent implements OnInit{
         this.router.navigate(['/'])
       },
       error=>{
-        console.log(error)
+        alert("email or password is incorrect")
+        window.location.reload()
       }
       )
   }

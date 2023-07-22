@@ -37,7 +37,7 @@ export class ProductComponent implements OnInit{
       this.counter--
     }
   }
-  ajouterPanier(){
-    this.produitsService.ajouterPanier()
-  }
+    ajouterPanier(id:number | undefined){
+      this.produitsService.ajouterPanier(id,this.counter)
+    }
 }

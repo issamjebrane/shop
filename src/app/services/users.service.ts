@@ -23,7 +23,7 @@ export class UsersService {
       "email":email,
       "password":password
     }
-    return this.http.post(`${environment.API}/login`, body)
+    return this.http.post(`${environment.API}/users/login`, body)
   }
   logout(){
       this.router.navigate(['/login']);

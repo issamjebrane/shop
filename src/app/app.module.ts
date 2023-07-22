@@ -16,7 +16,8 @@ import { PagesLayoutComponent } from './layouts/pages-layout/pages-layout.compon
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CheckoutComponent } from './checkout/checkout.component';
-import { AuthInterceptor } from './interceptors/auth.interceptor'; // Adjust the path as needed
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { ThankYouComponent } from './thank-you/thank-you.component'; // Adjust the path as needed
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor'; // Adjust the
     PanierComponent,
     PagesLayoutComponent,
     AuthLayoutComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    ThankYouComponent
   ],
   imports: [
     BrowserModule,

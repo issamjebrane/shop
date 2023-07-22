@@ -6,6 +6,7 @@ import { ProductComponent } from './product/product.component';
 import { PanierComponent } from './panier/panier.component';
 import { PagesLayoutComponent } from './layouts/pages-layout/pages-layout.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { ThankYouComponent } from './thank-you/thank-you.component';
 
 const routes: Routes = [
   {
@@ -29,7 +30,7 @@ const routes: Routes = [
       },
       {
         path:'checkout',
-        component:CheckoutComponent
+        component:ThankYouComponent
       }
     ]
   }

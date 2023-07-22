@@ -12,7 +12,8 @@ export class BoutiqueComponent implements OnInit{
   
   produits!:produit[]
   isDropdown:boolean=false
-
+  page:number=0
+  isLoading:boolean=false
   checkboxes=[
     { checked: false, label: 'phone' },
     { checked: false, label: 'tv' },
@@ -31,11 +32,11 @@ export class BoutiqueComponent implements OnInit{
  
 
   getProduits() {
+    this.isLoading=true
     this.produitService.getProduits().subscribe(
       (data:produit[]) => {
-        this.produits = data;
-        this.produits.map(produit=>{
-        })
+        this.produits = data.slice(0,6);
+        this.isLoading=false
       },
       (error: any) => {
         console.error(error);
@@ -47,6 +48,10 @@ export class BoutiqueComponent implements OnInit{
     const checked  = this.checkboxes.filter((checkbox)=>{
       return checkbox.checked==true
     })
+    if(checked.length==0){
+      this.getProduits()
+      return 
+    }
     const labels = checked.map(checked=>{
       return checked.label
     })
@@ -69,5 +74,16 @@ export class BoutiqueComponent implements OnInit{
 
   clearFilter(){
     window.location.reload()
+  }
+
+  getToPage(page:number){
+    if(page == -1){
+      return
+    } 
+    this.produitService.getProduitAtPage(page).subscribe((data:produit[])=>{
+      this.produits=data
+      this.isLoading=false
+      this.page=page
+    })
   }
 }

@@ -2,27 +2,28 @@
     <div class="panier-title">
         <h1>panier</h1>
       </div>
-      <div class="product">
-        <!-- <div class="paniers">
+      <h1 *ngIf="produits?.length==0" class="product text-danger">panier vide</h1>
+      <div class="product" *ngIf="produits?.length">
+        <div class="paniers">
             <div class="panier" *ngFor="let produit of produits">
                 <div class="image"> 
-                    <img [src]="produit.img" alt="">
+                    <img [src]="produit.image" alt="">
                 </div>
                 <div class="desc">
                     <div class="recap-sub">
-                        <h5>{{produit.desc}}</h5>
+                        <h5>{{produit.description}}</h5>
                         <span>x</span>
                     </div>
-                    <span>quantite:5</span>
-                    <span>$80</span>
+                    <span>quantite:{{getQuantity(produit.id)}}</span>
+                    <span>${{produit.prix}}</span>
                 </div>
             </div>
-        </div> -->
+        </div>
             <div class="recap">
                 <span><b>Récapitulatif de la commande</b></span>
                 <div class="recap-sub">
                     <span>subtotal</span>
-                    <span>$99</span>
+                    <span>${{prix}}</span>
                 </div>
                 <div class="recap-sub">
                     <span>shipping</span>
@@ -31,9 +32,9 @@
                 <hr>
                 <div class="recap-sub">
                     <span>total</span>
-                    <span>$99</span>
+                    <span>{{prix}}</span>
                 </div>
-                <button class="checkout">Checkout</button>
+                <a class="checkout" routerLink="/checkout" (click)="clearPanier()">Checkout</a>
             </div>
         
     </div>

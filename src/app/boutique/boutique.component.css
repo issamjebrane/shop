@@ -71,9 +71,19 @@ h5{
     row-gap: 25px;
     grid-auto-rows: minmax(100px, auto);
   }
+  .last-item {
+    grid-column: 1 / -1;
+    margin: auto;
+  }
+  .last-item > button{
+    margin: 10px;
+    border: none;
+    }
   .product{
     cursor: pointer;
+    height: 300px;
   }
+ 
   .dropdownMenu{
     position: absolute;
     display: flex;
@@ -114,7 +124,6 @@ h5{
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
   }  
-
 
     .image{
       aspect-ratio: 3/2;
