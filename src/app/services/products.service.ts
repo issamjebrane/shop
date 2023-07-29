@@ -65,7 +65,7 @@ export class ProductsService {
   filter(labels:string[]):Observable<produit[]>{
     const param = labels.join(',')
     
-    return this.http.get<produit[]>(`${environment.API}/produits/${param}`,)
+    return this.http.get<produit[]>(`${environment.API}/produits/produit/${param}`,)
   }
 
   getPanier():Observable<produit[]> |undefined{

@@ -17,7 +17,11 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { ThankYouComponent } from './thank-you/thank-you.component'; // Adjust the path as needed
+import { ThankYouComponent } from './thank-you/thank-you.component';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component'; // Adjust the path as needed
+import { AdminModule } from './admin/admin.module';
+import { AdminRoutingModule } from './admin/admin-routing.module';
+import { SideBarComponent } from './shared/side-bar/side-bar.component';
 
 @NgModule({
   declarations: [
@@ -31,11 +35,14 @@ import { ThankYouComponent } from './thank-you/thank-you.component'; // Adjust t
     PagesLayoutComponent,
     AuthLayoutComponent,
     CheckoutComponent,
-    ThankYouComponent
+    ThankYouComponent,
+    AdminLayoutComponent,
+    SideBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AdminRoutingModule,
     AuthRoutingModule,
     MatIconModule,
     FormsModule,
