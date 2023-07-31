@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../services/products.service';
 import { produit } from 'src/types/produit.type';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-boutique',
@@ -20,8 +21,7 @@ export class BoutiqueComponent implements OnInit{
     { checked: false, label: 'speaker' }
   ]
 
-  constructor(private router :Router, private produitService : ProductsService
-    ){
+  constructor(private router :Router, private produitService : ProductsService,private adminService:AdminService ){
    
   }
  
@@ -36,6 +36,7 @@ export class BoutiqueComponent implements OnInit{
     this.produitService.getProduits().subscribe(
       (data:produit[]) => {
         this.produits = data.slice(0,6);
+        console.log(this.produits)
         this.isLoading=false
       },
       (error: any) => {
@@ -80,8 +81,10 @@ export class BoutiqueComponent implements OnInit{
     if(page == -1){
       return
     } 
-    this.produitService.getProduitAtPage(page).subscribe((data:produit[])=>{
-      this.produits=data
+    this.adminService.getProduitAtPage(page).subscribe((data)=>{
+      if(data.content.length==0){return}
+      // console.log(data.content)
+      this.produits=data.content
       this.isLoading=false
       this.page=page
     })

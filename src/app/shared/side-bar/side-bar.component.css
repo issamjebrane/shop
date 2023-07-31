@@ -1,0 +1,28 @@
+.side-bar{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: relative;
+    width: 300px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    color: #3e60b0; /* White text color */
+    text-align: left;
+    background-color: transparent; /* Transparent background */
+    border: none;
+    border-bottom: 1px solid #3e60b0; /* Bottom border for separation */
+    cursor: pointer;
+    display: block;
+  }
+
+
+  /* Hover Effect */
+  button:hover {
+    background-color: #3e60b0; /* Darker color on hover */
+    color: white;
+  }

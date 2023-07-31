@@ -1,36 +1,41 @@
 <div>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th *ngFor="let key of keys" scope="col">{{key}}</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let user of users" class="align-middle">
-                <td>{{user.id}}</td>
-                <td>{{user.nom}}</td>
-                <td>{{user.prenom}}</td>
-                <td>{{user.adresse}}</td>
-                <td>{{user.ville}}</td>
-                <td>{{user.num_tel}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.password}}</td>
-            </tr>
-        </tbody>
-    </table>
+    <h1>
+        Users
+    </h1>
+    <div class="user-table">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th *ngFor="let key of keys" scope="col">{{key}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users" class="align-middle">
+                    <td>{{user.id}}</td>
+                    <td>{{user.nom}}</td>
+                    <td>{{user.prenom}}</td>
+                    <td>{{user.adresse}}</td>
+                    <td>{{user.ville}}</td>
+                    <td>{{user.num_tel}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.password}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <nav aria-label="Page navigation" class="last-item ">
+        <ul class="pagination justify-content-center ">
+            <li class="page-item">
+                <a class="page-link text-black" href="javascript:;" aria-label="Previous" (click)="getToPage(page-1)">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item" ><a class="page-link text-black disabled" href="javascript:;" >{{page + 1}}</a></li>
+            <li class="page-item" >
+                <a class="page-link text-black" href="javascript:;" aria-label="Next" (click)="getToPage(page+1)">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </div>
-<nav aria-label="Page navigation" class="last-item ">
-    <ul class="pagination justify-content-center ">
-        <li class="page-item">
-            <a class="page-link text-black" href="javascript:;" aria-label="Previous" (click)="getToPage(page-1)">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        <li class="page-item" ><a class="page-link text-black disabled" href="javascript:;" >{{page + 1}}</a></li>
-        <li class="page-item" >
-            <a class="page-link text-black" href="javascript:;" aria-label="Next" (click)="getToPage(page+1)">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-    </ul>
-</nav>
