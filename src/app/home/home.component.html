@@ -1,4 +1,4 @@
-<div class="text-center">
+<!-- <div class="text-center">
     <div class="slider">
         <h1>Better clothing for the planet</h1>
         <p>
@@ -21,4 +21,39 @@
           </div>
         </div>
     </div>
-</div>
+</div> -->
+<main>
+  <div class="hero">
+    <div class="hero-text first-col">
+      <h1> Latest Tech <span>products</span>
+        With The Most Attractive <span>PRICES</span></h1>
+        <button class="hero-button">discover</button>
+      </div>
+      <div class="second-col">
+        <div class="product-image" id="image">
+          <img [src]="product?.image" alt="">
+        </div>
+        <ul>
+          <li *ngFor="let product of products" (click)="productPagination(product)" class="filter"></li>
+        </ul>
+      </div>
+      <div class="background"></div>
+  </div>
+  <div class="featured-on">
+    <h2>featured on</h2>
+    <div class="logos">
+      <div class="flex-item">
+        <img src="../../assets/msiIcon.svg" alt="msi">
+      </div>
+      <div class="flex-item">
+        <img src="../../assets/maclogo 1.svg" alt="apple">
+      </div>
+      <div class="flex-item">
+        <img src="../../assets/samsungicon 1.svg" alt="samsung">
+      </div>
+      <div class="flex-item">
+        <img src="../../assets/lgicon 1.svg" alt="lg">
+      </div>
+    </div>
+  </div>
+</main>

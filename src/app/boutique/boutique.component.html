@@ -37,12 +37,12 @@
             </div>
         <div class="wrapper">
             <div *ngIf="isLoading">loading</div>
-            <div *ngFor="let item of produits">
-                <div class="product card" (click)="navigateToRoute(item.id)">
-                  <img [src]="item.image" class="card-img-top image" alt="Product Image">
+            <div *ngFor="let product of products">
+                <div class="product card" (click)="navigateToRoute(product.id)">
+                  <img [src]="product.image" class="card-img-top image" alt="Product Image">
                   <div class="card-body">
-                    <h6 class="card-title">{{ item.description }}</h6>
-                    <span class="text-primary">{{item.prix}}$</span>
+                    <h6 class="card-title">{{ product.description }}</h6>
+                    <span class="text-primary">{{product.prix}}$</span>
                   </div>
                 </div>
             </div>

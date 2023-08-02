@@ -5,8 +5,6 @@ import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { users } from 'src/types/users.type';
 import { environment } from 'src/environments/environment.development';
-import { error } from 'jquery';
-import { produit } from 'src/types/produit.type';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +21,7 @@ export class UsersService {
       "email":email,
       "password":password
     }
+    
     return this.http.post(`${environment.API}/users/login`, body)
   }
   logout(){
@@ -46,6 +45,6 @@ export class UsersService {
       "email":value.email,
       "password":value.password
     }
-    return this.http.post<any>(`${environment.API}/register`,data)
+    return this.http.post<any>(`${environment.API}/users/register`,data)
   }
 }

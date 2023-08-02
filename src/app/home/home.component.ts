@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {  produit } from 'src/types/produit.type';
+import {  product } from 'src/types/product.type';
 import { ProductsService } from '../services/products.service';
 
 @Component({
@@ -9,25 +9,40 @@ import { ProductsService } from '../services/products.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit{
-produits!:produit[]
+products!:product[]
+product?:product;
+isOpacity:boolean=false;
 
 constructor(private router:Router,private productsService: ProductsService){}
 
 ngOnInit() {
   this.getProduits();
+  
 }
 
 getProduits() {
   this.productsService.getProduits().subscribe(
-    (data:produit[]) => {
-      this.produits = data.slice(0,3);
-      this.produits.map(produit=>{
-      })
+    (data:product[]) => {
+      this.products = data.slice(0,4);
+      this.product=this.products[0];
+      this.product.image="../../".concat(this.product.image);
+      this.alterImages();
     },
     (error: any) => {
       console.error(error);
     }
   );
+}
+productPagination(product:product){
+
+  this.product=product;
+}
+alterImages(){
+    let i = 0;
+    setInterval(()=>{
+      i=(i+1)%4;
+      this.product=this.products[i];
+    },5000)    
 }
 navigateToRoute(id:number){
   this.router.navigate(['/product',id])

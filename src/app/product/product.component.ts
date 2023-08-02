@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../services/products.service';
-import { produit } from 'src/types/produit.type';
+import { product } from 'src/types/product.type';
 
 @Component({
   selector: 'app-product',
@@ -10,17 +10,20 @@ import { produit } from 'src/types/produit.type';
 })
 export class ProductComponent implements OnInit{
 
-  produit?:produit;
+  product?:product;
   id?:number;
   counter:number=1;
+  isLoading:boolean=false;
   constructor(private route:ActivatedRoute,private produitsService:ProductsService){
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params=>{
-      this.id = +params['id']
-      this.produitsService.getProduit(this.id).subscribe((data:produit)=>{
-        this.produit = data
+      this.id = +params['id'];
+      this.isLoading=true;
+      this.produitsService.getProduit(this.id).subscribe((data:product)=>{
+        this.product = data;
+        this.isLoading=false;
       })
     })
   }

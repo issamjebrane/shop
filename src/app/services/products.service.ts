@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { produit } from 'src/types/produit.type';
-import { HttpClient } from '@angular/common/http';
+import { product } from 'src/types/product.type';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 import { Observable } from 'rxjs';
 
@@ -17,16 +17,16 @@ export class ProductsService {
   ]
   constructor(private http:HttpClient) { }
 
-  getProduit(id:number):Observable<produit>{
-    return this.http.get<produit>(`${environment.API}/produits/produit/${id}`)
+  getProduit(id:number):Observable<product>{
+    return this.http.get<product>(`${environment.APISPRING}produits/${id}`)
   }
   
-  getProduits():Observable<produit[]>{
-    return this.http.get<produit[]>(`${environment.API}/produits`)
+  getProduits():Observable<product[]>{
+    return this.http.get<product[]>(`${environment.API}/produits`)
   }
   
-  getProduitAtPage(page:number):Observable<produit[]>{
-    return this.http.get<produit[]>(`${environment.API}/produits/page/${page}`)
+  getProduitAtPage(page:number):Observable<product[]>{
+    return this.http.get<product[]>(`${environment.API}/produits/page/${page}`)
   }
 
   ajouterPanier(id:number|undefined,quantity:number){
@@ -62,16 +62,22 @@ export class ProductsService {
 
   }
 
-  filter(labels:string[]):Observable<produit[]>{
+  filter(labels:string[]):Observable<product[]>{
     const param = labels.join(',')
     
-    return this.http.get<produit[]>(`${environment.API}/produits/produit/${param}`,)
+    return this.http.get<product[]>(`${environment.API}/produits/${param}`,)
   }
 
-  getPanier():Observable<produit[]> |undefined{
+  filterSpringBoot(labels:string[]){
+    const param = labels.join(',');
+    const params =new HttpParams().set('type',param)
+    return this.http.get<product[]>(`${environment.APISPRING}produits/filter`,{params})
+  }
+
+  getPanier():Observable<product[]> |undefined{
     const id = this.produits.map(produit=>produit.id).join(",")
     if(this.produits.length>0){
-    return this.http.get<produit[]>(`${environment.API}/produits/id/${id}`)
+    return this.http.get<product[]>(`${environment.API}/produits/id/${id}`)
   }
     return
   }

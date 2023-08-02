@@ -1,4 +1,4 @@
-export type produit ={
+export type product ={
   id : number;
   ref : string;
   type : string;

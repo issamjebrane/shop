@@ -1,7 +1,7 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductsService } from '../services/products.service';
-import { produit } from 'src/types/produit.type';
+import { product } from 'src/types/product.type';
 import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { AdminService } from 'src/app/services/admin.service';
 })
 export class BoutiqueComponent implements OnInit{
   
-  produits!:produit[]
+  products!:product[]
   isDropdown:boolean=false
   page:number=0
   isLoading:boolean=false
@@ -34,9 +34,9 @@ export class BoutiqueComponent implements OnInit{
   getProduits() {
     this.isLoading=true
     this.produitService.getProduits().subscribe(
-      (data:produit[]) => {
-        this.produits = data.slice(0,6);
-        console.log(this.produits)
+      (data:product[]) => {
+        this.products = data.slice(0,6);
+        console.log(this.products)
         this.isLoading=false
       },
       (error: any) => {
@@ -44,21 +44,20 @@ export class BoutiqueComponent implements OnInit{
       }
     );
   }
-
+  
+  //this function for filtering between the three types provided
   onCheckboxChange() {
     const checked  = this.checkboxes.filter((checkbox)=>{
       return checkbox.checked==true
-    })
+    }) // get all the checked checkboxes
     if(checked.length==0){
       this.getProduits()
       return 
     }
-    const labels = checked.map(checked=>{
-      return checked.label
-    })
-      this.produitService.filter(labels).subscribe((response:produit[])=>{
-        this.produits=response
-     })
+    const labels = checked.map(checked=>checked.label)
+      this.produitService.filterSpringBoot(labels).subscribe((response:product[])=>{
+        this.products=response
+     }) //returning all products which there type is selected 
   
   }
 
@@ -84,7 +83,7 @@ export class BoutiqueComponent implements OnInit{
     this.adminService.getProduitAtPage(page).subscribe((data)=>{
       if(data.content.length==0){return}
       // console.log(data.content)
-      this.produits=data.content
+      this.products=data.content
       this.isLoading=false
       this.page=page
     })

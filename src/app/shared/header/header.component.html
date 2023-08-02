@@ -1,36 +1,51 @@
-<nav class="navbar navbar-expand-lg bg-primary">
-    <div class="container-fluid px-5">
-      <button class="nav-link" (click)="navigateHome()">Logo</button>
-      <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
-        <ul class="navbar-nav">          
-          <li class="nav-item">
-              <button class="nav-link" (click)="navigateHome()">Accueil</button>
+<nav class="header">
+      <a class="logo" (click)="navigateHome()">DigitalAZ</a>
+      <div class="nav-bar">
+        <div class="container-nav">
+          <ul class="nav-link">          
+            <li >
+              <a (click)="navigateHome()">Home</a>
             </li>
-            <li class="nav-item dropdown">
-                <button class="link nav-link" (click)="showDropdown()">boutique</button>
-                <ul [ngClass]="{'dropdownMenu': true, 'showedMenu': isDropdown}">
-                    <li><a class="dropdown-item" (click)="navigateBoutique(1)">Categories</a></li>
-                    <li><a class="dropdown-item" (click)="navigatePanier(1)">Panier</a></li>
-                    <li><a class="dropdown-item" (click)="navigateCheckout(1)">Checkout</a></li>
-                </ul>
+            <li >
+              <a  (click)="navigateBoutique(0)">Store</a>
             </li>
-        </ul>
-      </div>
-      <div class="mx-5 col-4">
-          <input class="form-control me-2 bg-transparent search" type="search" placeholder="Search" (ngModelChange)="handleSearch($event)" [(ngModel)]="searchValue">
+            <li class=" dropdown">
+              <a (click)="showDropdown()">Categories</a>
+              <ul [ngClass]="{'dropdownMenu': true, 'showedMenu': isDropdown}">
+                <li><a><img src="../../../assets/maclogo 1.svg" alt=""></a></li>
+                <li><a><img src="../../../assets/samsungicon 1.svg" alt=""></a></li>
+                <li><a><img src="../../../assets/lgicon 1.svg" alt=""></a></li>
+                <li><a><img src="../../../assets/msiIcon.svg" alt=""></a></li>
+              </ul>
+            </li>
+          </ul>
+          <!-- <div class="mx-5 col-4">
+            <input class="form-control me-2 bg-transparent search" type="search" placeholder="Search" (ngModelChange)="handleSearch($event)" [(ngModel)]="searchValue">
+          </div> -->
+          <div (click)="navigatePanier(0)" class="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="23" viewBox="0 0 19 23" fill="none">
+              <path d="M13.3233 4.79265C13.3233 7.03103 11.4369 8.87609 9.07156 8.87609C6.70623 8.87609 4.8198 7.03103 4.8198 4.79265C4.8198 2.55426 6.70623 0.709198 9.07156 0.709198C11.4369 0.709198 13.3233 2.55426 13.3233 4.79265Z" stroke="#03008D"/>
+              <rect x="0.5" y="6.20883" width="17.1431" height="15.5004" fill="#03008D" stroke="white"/>
+            </svg>
+            <span *ngIf="ProductsService.panier > 0">{{ProductsService.panier}}</span>
+          </div>
         </div>
-        <div class="col-1 text-center panier" (click)="navigatePanier(0)">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
-              </svg>
-              <span *ngIf="ProductsService.panier > 0">{{ProductsService.panier}}</span>
-        </div>
+
         <div class="connexion">
           <div class="logged" *ngIf="authService.isAuthenticated()">
             <span>{{user.nom.slice(0,1)|uppercase}}{{user.prenom.slice(0,1)|uppercase}}</span>
           </div>
-          <button *ngIf="authService.isAuthenticated()" class="btn btn-primary" type="button" (click)="logout()">Log Out</button>
-          <button *ngIf="!authService.isAuthenticated()" class="btn btn-primary" type="button" (click)="navigateLogin()">connexion</button>
+          <button *ngIf="authService.isAuthenticated()" class="button " type="button" (click)="logout()">Log Out</button>
+          <button *ngIf="!authService.isAuthenticated()" class="button" type="button" (click)="navigateLogin()">Sign In</button>
         </div>
-    </div>
+        
+        <div class="nav-dropdown">
+          <svg xmlns="http://www.w3.org/2000/svg" width="44" height="37" viewBox="0 0 44 37" fill="none">
+            <rect y="0.980377" width="43.5854" height="35.0392" rx="3" fill="#03008D"/>
+            <rect x="6.83685" y="7.81726" width="29.9115" height="4.27307" rx="2.13654" fill="white"/>
+            <rect x="6.83685" y="16.3634" width="29.9115" height="4.27307" rx="2.13654" fill="white"/>
+            <rect x="6.83685" y="24.9096" width="29.9115" height="4.27307" rx="2.13654" fill="white"/>
+          </svg>
+        </div>
+      </div>
 </nav>

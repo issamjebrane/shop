@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../services/products.service';
-import { produit } from 'src/types/produit.type';
+import { product } from 'src/types/product.type';
 
 @Component({
   selector: 'app-panier',
@@ -10,7 +10,7 @@ import { produit } from 'src/types/produit.type';
 export class PanierComponent implements OnInit{
   prix:number=0
   total:number=0
-  produits:produit[]=[]
+  products:product[]=[]
 
   constructor(private produitsService:ProductsService){
    
@@ -22,14 +22,14 @@ export class PanierComponent implements OnInit{
 
   ngOnInit(): void {
     this.produitsService.getPanier()?.subscribe(data=>{
-      this.produits=data
+      this.products=data
       this.getTotal()
     })
   }
 
   getTotal(){
-    if(this.produits.length>0){
-      this.produits.map(element=>{
+    if(this.products.length>0){
+      this.products.map(element=>{
         const quantity = this.getQuantity(element.id) 
         if(quantity){
           this.prix+= quantity*element.prix
@@ -39,7 +39,7 @@ export class PanierComponent implements OnInit{
   }
 
   clearPanier(){
-    this.produits=[]
+    this.products=[]
     this.produitsService.panier=0
   }
 }

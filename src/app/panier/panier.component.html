@@ -2,20 +2,20 @@
     <div class="panier-title">
         <h1>panier</h1>
       </div>
-      <h1 *ngIf="produits?.length==0" class="product text-danger">panier vide</h1>
-      <div class="product" *ngIf="produits?.length">
+      <h1 *ngIf="products?.length==0" class="product text-danger">panier vide</h1>
+      <div class="product" *ngIf="products?.length">
         <div class="paniers">
-            <div class="panier" *ngFor="let produit of produits">
+            <div class="panier" *ngFor="let product of products">
                 <div class="image"> 
-                    <img [src]="produit.image" alt="">
+                    <img [src]="product.image" alt="">
                 </div>
                 <div class="desc">
                     <div class="recap-sub">
-                        <h5>{{produit.description}}</h5>
+                        <h5>{{product.description}}</h5>
                         <span>x</span>
                     </div>
-                    <span>quantite:{{getQuantity(produit.id)}}</span>
-                    <span>${{produit.prix}}</span>
+                    <span>quantite:{{getQuantity(product.id)}}</span>
+                    <span>${{product.prix}}</span>
                 </div>
             </div>
         </div>
