@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit{
   }
 
   paramValue!: string;
-
+  isMobile:boolean=false
   isDropdown:boolean=false
   searchValue:string=''
   
@@ -52,6 +52,7 @@ export class HeaderComponent implements OnInit{
   }
 
   navigateBoutique(id:number){
+    this.isMobile=!this.isMobile
     if(id===1){
       this.showDropdown()
     }
@@ -67,7 +68,7 @@ export class HeaderComponent implements OnInit{
   }
 
   navigateHome(){
-    
+    this.isMobile=!this.isMobile
     this.router.navigate(['/'])
   }
 
@@ -81,5 +82,9 @@ export class HeaderComponent implements OnInit{
 
   logout(){
     this.usersService.logout()
+  }
+
+  showNavDropDown(){
+    this.isMobile=!this.isMobile;
   }
 }

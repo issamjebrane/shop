@@ -22,6 +22,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AdminModule } from './admin/admin.module';
 import { AdminRoutingModule } from './admin/admin-routing.module';
 import { SideBarComponent } from './shared/side-bar/side-bar.component';
+import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { SideBarComponent } from './shared/side-bar/side-bar.component';
     CheckoutComponent,
     ThankYouComponent,
     AdminLayoutComponent,
-    SideBarComponent
+    SideBarComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,

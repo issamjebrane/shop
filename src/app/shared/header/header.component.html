@@ -1,28 +1,56 @@
 <nav class="header">
+  <div class="mobile-version">
+    <ul [ngClass]="{'mobile':true,'block':!isMobile}">          
+      <li >
+        <a (click)="navigateHome()">Home</a>
+      </li>
+      <li >
+        <a  (click)="navigateBoutique(0)">Store</a>
+      </li>
+      <li class="dropdown">
+        <a (click)="showDropdown()">Categories</a>
+        <ul [ngClass]="{'dropdownMenu': true, 'showedMenu': isDropdown}">
+          <li><a><img src="../../../assets/maclogo 1.svg" alt=""></a></li>
+          <li><a><img src="../../../assets/samsungicon 1.svg" alt=""></a></li>
+          <li><a><img src="../../../assets/lgicon 1.svg" alt=""></a></li>
+          <li><a><img src="../../../assets/msiIcon.svg" alt=""></a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="nav-dropdown" (click)="showNavDropDown()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="44" height="37" viewBox="0 0 44 37" fill="none">
+        <rect y="0.980377" width="43.5854" height="35.0392" rx="3" fill="#03008D"/>
+        <rect x="6.83685" y="7.81726" width="29.9115" height="4.27307" rx="2.13654" fill="white"/>
+        <rect x="6.83685" y="16.3634" width="29.9115" height="4.27307" rx="2.13654" fill="white"/>
+        <rect x="6.83685" y="24.9096" width="29.9115" height="4.27307" rx="2.13654" fill="white"/>
+      </svg>
+    </div>
+  </div>
+
       <a class="logo" (click)="navigateHome()">DigitalAZ</a>
       <div class="nav-bar">
         <div class="container-nav">
-          <ul class="nav-link">          
-            <li >
-              <a (click)="navigateHome()">Home</a>
-            </li>
-            <li >
-              <a  (click)="navigateBoutique(0)">Store</a>
-            </li>
-            <li class=" dropdown">
-              <a (click)="showDropdown()">Categories</a>
-              <ul [ngClass]="{'dropdownMenu': true, 'showedMenu': isDropdown}">
-                <li><a><img src="../../../assets/maclogo 1.svg" alt=""></a></li>
-                <li><a><img src="../../../assets/samsungicon 1.svg" alt=""></a></li>
-                <li><a><img src="../../../assets/lgicon 1.svg" alt=""></a></li>
-                <li><a><img src="../../../assets/msiIcon.svg" alt=""></a></li>
-              </ul>
-            </li>
-          </ul>
+          <ul ngClass="nav-link">          
+              <li >
+                <a (click)="navigateHome()">Home</a>
+              </li>
+              <li >
+                <a  (click)="navigateBoutique(0)">Store</a>
+              </li>
+              <li class="dropdown">
+                <a (click)="showDropdown()">Categories</a>
+                <ul [ngClass]="{'dropdownMenu': true, 'showedMenu': isDropdown}">
+                  <li><a><img src="../../../assets/maclogo 1.svg" alt=""></a></li>
+                  <li><a><img src="../../../assets/samsungicon 1.svg" alt=""></a></li>
+                  <li><a><img src="../../../assets/lgicon 1.svg" alt=""></a></li>
+                  <li><a><img src="../../../assets/msiIcon.svg" alt=""></a></li>
+                </ul>
+              </li>
+            </ul>
           <!-- <div class="mx-5 col-4">
             <input class="form-control me-2 bg-transparent search" type="search" placeholder="Search" (ngModelChange)="handleSearch($event)" [(ngModel)]="searchValue">
           </div> -->
-          <div (click)="navigatePanier(0)" class="">
+          <div (click)="navigatePanier(0)" class="panier">
             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="23" viewBox="0 0 19 23" fill="none">
               <path d="M13.3233 4.79265C13.3233 7.03103 11.4369 8.87609 9.07156 8.87609C6.70623 8.87609 4.8198 7.03103 4.8198 4.79265C4.8198 2.55426 6.70623 0.709198 9.07156 0.709198C11.4369 0.709198 13.3233 2.55426 13.3233 4.79265Z" stroke="#03008D"/>
               <rect x="0.5" y="6.20883" width="17.1431" height="15.5004" fill="#03008D" stroke="white"/>
@@ -38,14 +66,6 @@
           <button *ngIf="authService.isAuthenticated()" class="button " type="button" (click)="logout()">Log Out</button>
           <button *ngIf="!authService.isAuthenticated()" class="button" type="button" (click)="navigateLogin()">Sign In</button>
         </div>
-        
-        <div class="nav-dropdown">
-          <svg xmlns="http://www.w3.org/2000/svg" width="44" height="37" viewBox="0 0 44 37" fill="none">
-            <rect y="0.980377" width="43.5854" height="35.0392" rx="3" fill="#03008D"/>
-            <rect x="6.83685" y="7.81726" width="29.9115" height="4.27307" rx="2.13654" fill="white"/>
-            <rect x="6.83685" y="16.3634" width="29.9115" height="4.27307" rx="2.13654" fill="white"/>
-            <rect x="6.83685" y="24.9096" width="29.9115" height="4.27307" rx="2.13654" fill="white"/>
-          </svg>
-        </div>
+       
       </div>
 </nav>
