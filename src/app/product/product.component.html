@@ -1,4 +1,4 @@
-<div class="wrapper">
+<main class="main">
   <span *ngIf="isLoading; else loading" >loading!!</span>
   <ng-template #loading>
     <div class="product-title">
@@ -9,19 +9,34 @@
         <img [src]="product?.image" alt="" class="image">
       </div>
       <div class="desc">
-        <h4>{{product?.description}}</h4>
-        <span>{{product?.prix}}$</span>
-        <p>Lorem ipsum dolor sit amet, 
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+        <div class="normal-price">
+          <h4>{{product?.description}}</h4>
+          <span class="price">{{product?.prix}}$</span>
+          <div class="finance">
+            <h1 class="financing-label">financing at:</h1>
+            <span class="price">{{product?.prix}}</span>
+            <span class="price-details">
+              <sup>$</sup>
+              <sub>/24mois</sub>
+            </span>
+          </div>
+        </div>
         <div class="counter">
-          <button class="minus" (click)="onMinusButton()">-</button>
+          <button class="minus" (click)="onMinusButton()">
+            <svg width="8" height="3" viewBox="0 0 8 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="7.90698" height="2.37209" fill="#03008D"/>
+            </svg>              
+          </button>
           <div class="counter-value">{{counter}}</div>
-          <button class="plus" (click)="onPlusButton()">+</button>
+          <button class="plus" (click)="onPlusButton()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M2.6686 4.44767V7.11628H4.44767V4.44767H7.11628V2.6686H4.44767V0H2.6686V2.6686H0V4.44767H2.6686Z" fill="#03008D"/>
+            </svg>
+          </button>
         </div>
         <input type="text" placeholder="remarque">
         <button class="ajouter" (click)="ajouterPanier(product?.id)">ajouter</button>
       </div>
     </div>
   </ng-template>
-</div>
+</main>

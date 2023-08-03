@@ -12,12 +12,11 @@ export class HomeComponent implements OnInit{
 products!:product[]
 product?:product;
 isOpacity:boolean=false;
-
+public filterInterval:any;
 constructor(private router:Router,private productsService: ProductsService){}
 
 ngOnInit() {
   this.getProduits();
-  
 }
 
 getProduits() {
@@ -34,17 +33,18 @@ getProduits() {
   );
 }
 productPagination(product:product){
-
   this.product=product;
+  clearInterval(this.filterInterval)
 }
 alterImages(){
     let i = 0;
-    setInterval(()=>{
+    
+  this.filterInterval= setInterval(()=>{
       i=(i+1)%4;
       this.product=this.products[i];
     },5000)    
 }
-navigateToRoute(id:number){
-  this.router.navigate(['/product',id])
-}
+  navigateToRoute(id:number|undefined){
+    this.router.navigate(['/product',id])
+  }
 }

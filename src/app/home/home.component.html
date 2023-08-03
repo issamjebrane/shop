@@ -30,7 +30,7 @@
         <button class="hero-button">discover</button>
       </div>
       <div class="second-col">
-        <div class="product-image" id="image">
+        <div class="product-image" id="image" (click)="navigateToRoute(product?.id)">
           <img [src]="product?.image" alt="">
         </div>
         <ul>

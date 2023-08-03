@@ -25,7 +25,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 79px;
+    gap: 30px;
     position: relative;
 }
 
@@ -34,7 +34,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 17px;
 }
 .nav-link li{
@@ -194,15 +194,17 @@
 
 @media (max-width: 768px) {
     /* Hide the regular navigation menu on mobile */
+    .container-nav{
+        gap: 0;
+        justify-content: space-around;
+    }
     .mobile-version{
         display: block;
     }
     .nav-bar{
         gap: 10px;
     }
-    .panier{
-        display: none;
-    }
+
     .nav-link{
         display: none;
     }
@@ -218,6 +220,9 @@
   }
 
   @media (max-width: 375px) {
+    .logo{
+        font-size: 20px;
+    }
     .mobile{
         left: 0;
         height: 100vh;

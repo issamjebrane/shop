@@ -1,29 +1,104 @@
-
-.product-title{
-    background: #D9D9D9;
-    padding: 30px 70px;
+.main{
+  margin: 45px auto;
 }
-
+.product-title{
+    background: #D8D8EE;
+    padding: 30px 70px;
+    border-radius: 7px;
+}
+.product-title h1{
+    color: #03008D;
+    font-family: Outfit;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 95%; /* 19px */
+    letter-spacing: 3.8px;
+    text-transform: uppercase;
+}
+.normal-price h4{
+  color: #010027;
+  font-family: Outfit;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.price{
+  color: #000;
+  font-family: Outfit;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
 .product{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 50px 100px;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    padding: 20px 0;
+    gap: 10px;
+    min-height: 427px;
+}
+.image-container{
+  grid-column: 2/span 5;
+}
+.image{
+  width: 100%;
+  height: 100%;
+  object-fit:contain;
 }
 .desc{
+    grid-column: 7/span 5;
+    padding: 45px 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
     gap: 20px;
 }
+.desc h4{
+  color: #010027;
+  font-family: Outfit;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.finance {
+
+  gap: 5px;
+  align-items: center;
+}
+.finance .financing-label {
+  color: #03008D;
+  font-family: Outfit;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;  
+}
+
+.finance .price{
+  color: #000;
+  font-family: Outfit;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width:min-content;
+}
+
+
 .counter {
     display: flex;
     align-items: center;
   }
   
   .counter-value {
+    color: #000;
+    font-family: Outfit;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
     padding: 0 10px;
   }
   
@@ -31,29 +106,30 @@
   .plus {
     width: 30px;
     height: 30px;
-    background-color: #f2f2f2;
+    background-color: #D8D8EE;
     border: none;
     outline: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color 0.3s ease;
   }
   
   .minus:hover,
   .plus:hover {
-    background-color: #ccc;
+    background-color: #e1e1eb;
   }
   
   .minus:active,
   .plus:active {
-    background-color: #999;
+    background-color: #e1e1eb;
   }
 
   .ajouter {
     display: inline-block;
     padding: 10px 20px;
-    background-color: black; 
+    background-color: #03008D; 
     color: #ffffff;
     border: none;
     border-radius: 0;
@@ -64,7 +140,7 @@
   }
   
   .ajouter:hover {
-    background-color: rgb(75, 73, 73);
+    background-color: rgb(64, 67, 142);
   }
   
   .ajouter:focus {
@@ -73,9 +149,18 @@
   
 
  
-.image{
-  aspect-ratio: 3/2;
-  width: 100%;
-  height: 100%;
-  object-fit:contain;
+@media (max-width:1000px) {
+  .product-title h1{
+    font-size: 15px;
+  }
+  .product{
+    grid-template-columns: 1fr; /* Single column */
+    grid-template-rows: repeat(2, 1fr); /* Two rows */
+  }
+  .image-container{
+    grid-column: 1;
+  }
+  .desc{
+    grid-column: 1;
+  }
 }
