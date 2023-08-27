@@ -47,4 +47,7 @@ alterImages(){
   navigateToRoute(id:number|undefined){
     this.router.navigate(['/product',id])
   }
+  navigateToStore(){
+    this.router.navigate(['/boutique'])
+  }
 }

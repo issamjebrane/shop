@@ -14,9 +14,9 @@ export class HeaderComponent implements OnInit{
 
   user = {
     nom :'',
-    prenom :''
+    prenom :'',
+    isAdmin:false,
   }
-
   paramValue!: string;
   isMobile:boolean=false
   isDropdown:boolean=false
@@ -29,11 +29,11 @@ export class HeaderComponent implements OnInit{
     protected authService:AuthService
     ){
       const storedData = localStorage.getItem('userData');
-
       if (storedData) {
         const parsedData:users = JSON.parse(storedData);
         this.user.nom = parsedData.nom
-        this.user.prenom= parsedData.prenom     
+        this.user.prenom= parsedData.prenom   
+        this.user.isAdmin= parsedData.isAdmin 
       } 
     }
 
@@ -41,10 +41,14 @@ export class HeaderComponent implements OnInit{
   }
   
   navigateLogin(){
+    this.isMobile=false
+    this.isDropdown=false
     this.router.navigate(['/login'])
   }
 
   navigatePanier(id:number){
+    this.isMobile=false
+    this.isDropdown=false
     if(id===1){
       this.showDropdown()
     }
@@ -52,7 +56,8 @@ export class HeaderComponent implements OnInit{
   }
 
   navigateBoutique(id:number){
-    this.isMobile=!this.isMobile
+    this.isMobile=false
+    this.isDropdown=false
     if(id===1){
       this.showDropdown()
     }
@@ -60,15 +65,18 @@ export class HeaderComponent implements OnInit{
   }
   
   navigateCheckout(id:number){
+    this.isMobile=false
+    this.isDropdown=false
     if(id===1){
       this.showDropdown()
     }
     this.router.navigate(['/checkout'])
 
   }
-
+  
   navigateHome(){
-    this.isMobile=!this.isMobile
+    this.isMobile=false
+    this.isDropdown=false
     this.router.navigate(['/'])
   }
 

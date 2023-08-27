@@ -30,7 +30,7 @@ export class AuthService {
     return token ? !this.jwtHelper.isTokenExpired(token) : false;
   }
 
-  public setUser(userdata : {id:number,nom:string,prenom:string}){
+  public setUser(userdata : {id:number,nom:string,prenom:string,isAdmin:boolean}){
     localStorage.setItem('userData', JSON.stringify(userdata))
   }
 

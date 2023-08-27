@@ -1,28 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminLayoutComponent } from '../layouts/admin-layout/admin-layout.component';
-import { UsersDashboardComponent } from './users-dashboard/users-dashboard.component';
-import { ProduitDashboardComponent } from './produit-dashboard/produit-dashboard.component';
+
+import { adminGuard } from '../guards/admin.guard';
 
 const routes: Routes = [
   {
     path:"admin",
     component:AdminLayoutComponent,
+    canActivate:[adminGuard],
     children:[
       { 
         path: '', 
         redirectTo: 
-        'users', 
+        'products', 
         pathMatch: 'full'
        } 
       ,
       {
         path:"users",
-        component:UsersDashboardComponent
+        loadChildren: () => import('./users-admin/users-admin.module').then(m =>m.UsersAdminModule )
       },
       {
-        path:"produits",
-        component:ProduitDashboardComponent
+        path:"products",
+        loadChildren: () => import('./product-admin/product-admin.module').then(m =>m.ProductAdminModule )
       }
     ]
   }

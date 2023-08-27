@@ -30,7 +30,7 @@ export class UsersService {
       this.authservice.removeUser()
   }
   setUser(user : users){
-    const userdata = {id:user.id,nom:user.nom,prenom : user.prenom}
+    const userdata = {id:user.id,nom:user.nom,prenom : user.prenom,isAdmin:user.isAdmin}
     this.authservice.setUser(userdata)
   }
   getUser():users{

@@ -41,6 +41,7 @@ padding: 50px;
   gap: 10px; /* Adjust the gap between grid items if desired */
   padding-top: 100px;
   height: 500px;
+  position: relative;
 }
 .first-col{
   grid-column: span 6; /* This div will take 6 columns */
@@ -125,7 +126,7 @@ ul{
   border-radius: 200px 10px;
   background: #D8D8EE;
   filter: blur(88px);
-  width: 1280px;
+  width: 100%;
   height: 471px;
   z-index: -1;
 }

@@ -59,7 +59,7 @@
         </div>
 
         <div class="connexion">
-          <div class="logged" *ngIf="authService.isAuthenticated()">
+          <div [ngClass]="{'logged':true,'admin':user.isAdmin}" *ngIf="authService.isAuthenticated()">
             <span>{{user.nom.slice(0,1)|uppercase}}{{user.prenom.slice(0,1)|uppercase}}</span>
           </div>
           <button *ngIf="authService.isAuthenticated()" class="button " type="button" (click)="logout()">Log Out</button>

@@ -12,9 +12,9 @@ export class ProductsService {
   produits:{
     id:number|undefined,
     quantity:number
-  }[]=[
-    
-  ]
+  }[]=[]
+  products:product[]=[]
+
   constructor(private http:HttpClient) { }
 
   getProduit(id:number):Observable<product>{
@@ -22,11 +22,11 @@ export class ProductsService {
   }
   
   getProduits():Observable<product[]>{
-    return this.http.get<product[]>(`${environment.API}/produits`)
+    return this.http.get<product[]>(`${environment.APISPRING}produits/getproduits`)
   }
   
   getProduitAtPage(page:number):Observable<product[]>{
-    return this.http.get<product[]>(`${environment.API}/produits/page/${page}`)
+    return this.http.get<product[]>(`${environment.APISPRING}produits/page/${page}`)
   }
 
   ajouterPanier(id:number|undefined,quantity:number){
@@ -80,5 +80,21 @@ export class ProductsService {
     return this.http.get<product[]>(`${environment.API}/produits/id/${id}`)
   }
     return
+  }
+  deleteItem(id:number,products:product[]):product[]{
+    this.products = products.filter((product)=>product.id!=id)
+    this.produits= this.produits.filter((produit)=>produit.id!=id)
+    this.panier = this.getTotalQuantity(this.produits)
+    return this.products;
+  }
+  onPlusButton(id:number){
+      this.produits.forEach(produit=>{if(produit.id==id){
+        produit.quantity++
+      }})
+  }
+  onMinusButton(id:number){
+    this.produits.forEach(produit=>{if(produit.id==id){
+      produit.quantity--
+    }})
   }
 }

@@ -1,18 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { AdminRoutingModule } from './admin-routing.module';
-import { UsersDashboardComponent } from './users-dashboard/users-dashboard.component';
-import { ProduitDashboardComponent } from './produit-dashboard/produit-dashboard.component';
+import { UsersAdminRoutingModule } from './users-admin/users-admin-routing.module';
+import { ProductAdminModule } from './product-admin/product-admin.module';
 
 
 @NgModule({
   declarations: [
-    UsersDashboardComponent,
-    ProduitDashboardComponent
   ],
   imports: [
     CommonModule,
+    ProductAdminModule,
+    UsersAdminRoutingModule,
     AdminRoutingModule
   ]
 })

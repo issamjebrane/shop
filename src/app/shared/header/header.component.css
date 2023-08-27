@@ -190,9 +190,12 @@
     display: none;
 }
 
+.admin{
+    background-color: red;
+}
 
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     /* Hide the regular navigation menu on mobile */
     .container-nav{
         gap: 0;

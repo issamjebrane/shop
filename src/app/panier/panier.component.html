@@ -1,9 +1,11 @@
-<div class="wrapper">
+<div class="main">
     <div class="panier-title">
-        <h1>panier</h1>
+        <h1>Shoppint Cart</h1>
       </div>
-      <h1 *ngIf="products?.length==0" class="product text-danger">panier vide</h1>
-      <div class="product" *ngIf="products?.length">
+      <div class="empty" *ngIf="products?.length==0">
+          <h1 class="no-article text-danger">No article on your shopping cart</h1>
+      </div>
+      <!-- <div class="product" *ngIf="products?.length">
         <div class="paniers">
             <div class="panier" *ngFor="let product of products">
                 <div class="image"> 
@@ -20,7 +22,7 @@
             </div>
         </div>
             <div class="recap">
-                <span><b>Récapitulatif de la commande</b></span>
+                <span><b>Summary</b></span>
                 <div class="recap-sub">
                     <span>subtotal</span>
                     <span>${{prix}}</span>
@@ -31,11 +33,88 @@
                 </div>
                 <hr>
                 <div class="recap-sub">
-                    <span>total</span>
+                    <span>total order</span>
                     <span>{{prix}}</span>
                 </div>
                 <a class="checkout" routerLink="/checkout" (click)="clearPanier()">Checkout</a>
             </div>
-        
+    </div> -->
+    <div class="cart-main" *ngIf="products?.length">
+        <div class="product-info">
+            <table>
+                <thead>
+                    <tr class="table-header">
+                        <th class="sub-header-first" colspan="2">Item</th>
+                        <th class="price">Price</th>
+                        <th class="quantity">Quantity</th>
+                        <th class="subtotal">Subtotal</th>
+                        <th class="action"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="panier" *ngFor="let product of products">
+                        <td> 
+                            <div class="image-container">
+                                <img [src]="product.image" [alt]="product.description" class="image">
+                            </div>
+                        </td>
+                        <td class="sub-description">
+                            <h4>{{product.description}}</h4>
+                            <dl>
+                                <div>
+                                    <dt>color:</dt>
+                                <dd>gray</dd>
+                                </div>
+                                <div>
+                                    <dt>storage capacity:</dt>
+                                    <dd>128gb</dd>
+                                </div>
+                            </dl>
+                        </td>
+                        <td class="price">${{product.prix}}</td>
+                        <td class="quantity">
+                            <div class="counter">
+                                <button class="minus" (click)="onMinusButton(product.id)">
+                                  <svg width="8" height="3" viewBox="0 0 8 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="7.90698" height="2.37209" fill="#03008D"/>
+                                  </svg>              
+                                </button>
+                                <div class="counter-value">{{getQuantity(product.id)}}</div>
+                                <button class="plus" (click)="onPlusButton(product.id)">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M2.6686 4.44767V7.11628H4.44767V4.44767H7.11628V2.6686H4.44767V0H2.6686V2.6686H0V4.44767H2.6686Z" fill="#03008D"/>
+                                  </svg>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="subtotal">${{getSubtotal(product.prix,product.id)}}</td>
+                        <th class="action" (click)="deleteItem(product.id)">
+                            <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="delete">
+                            <g id="Group">
+                            <g id="Layer_65">
+                            <path id="Path" d="M13.9327 12.5267C14.0629 12.6518 14.1362 12.8222 14.1362 13C14.1362 13.1778 14.0629 13.3482 13.9327 13.4733C13.8036 13.5995 13.6278 13.6705 13.4444 13.6705C13.261 13.6705 13.0851 13.5995 12.956 13.4733L7.25388 7.94L1.55176 13.4733C1.42261 13.5995 1.2468 13.6705 1.0634 13.6705C0.88 13.6705 0.704193 13.5995 0.575041 13.4733C0.444826 13.3482 0.371582 13.1778 0.371582 13C0.371582 12.8222 0.444826 12.6518 0.575041 12.5267L6.28404 7L0.575041 1.47333C0.400567 1.30423 0.332427 1.05775 0.396289 0.826749C0.460151 0.595746 0.646313 0.415312 0.884649 0.353416C1.12299 0.291519 1.37729 0.357562 1.55176 0.526668L7.25388 6.06L12.956 0.526668C13.2257 0.265253 13.663 0.265253 13.9327 0.526668C14.2024 0.788082 14.2024 1.21192 13.9327 1.47333L8.22372 7L13.9327 12.5267Z" fill="#231F20"/>
+                            </g>
+                            </g>
+                            </svg>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="summary">
+            <h1 class="summary-title">summary</h1>
+            <div class="lign"></div>
+            <div class="summary-subtotal">
+                <span>Subtotal</span>
+                <span>
+                    {{prix}}$
+                </span>
+            </div>
+            <div class="total-order">
+                <span class="order-title">total order</span>
+                <h1 class="total-prix">{{prix}}$</h1>
+            </div>
+            <button class="order-button">order</button>
+        </div>
     </div>
 </div>

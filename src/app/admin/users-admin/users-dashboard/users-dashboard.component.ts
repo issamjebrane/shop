@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { error } from 'jquery';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 
 
@@ -10,9 +10,11 @@ export interface UserInterface{
   adresse?: string ;
   ville?:string ;
   num_tel:number;
+  numTel:number;
   email:string;
   password:string;
   is_admin?:boolean ;
+  isAdmin?:boolean;
 }
 
 @Component({
@@ -27,20 +29,22 @@ export class UsersDashboardComponent implements OnInit{
   users:UserInterface[]=[];
   keys:string[]=[];
   page:number=0
-  constructor(private adminService : AdminService){
+  constructor(private adminService : AdminService,private route:Router){
     
   }
 
-ngOnInit(): void {
-  this.getUsers();
-}
+  ngOnInit(): void {
+    this.getUsers();
+  }
+  addUser(){
+    this.route.navigate(['admin/users/adduser'])
+  }
 
   public getUsers(){
     this.adminService.getUsers().subscribe((response:UserInterface[])=>{
       this.users=response.slice(0,6)
       this.keys=Object.keys(this.users[0]);
       this.keys.pop();
-      console.log(this.keys)
     },(error)=>{
       console.log("error fetching data")
     });
@@ -55,4 +59,6 @@ ngOnInit(): void {
      this.page=page
     })
   }
+
+
 }

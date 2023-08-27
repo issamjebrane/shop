@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import { AuthService } from '../../services/auth.service';
-import { UserInterface } from 'src/app/admin/users-dashboard/users-dashboard.component';
+import { UserInterface } from 'src/app/admin/users-admin/users-dashboard/users-dashboard.component';
 import { catchError, switchMap, throwError } from 'rxjs';
 
 @Component({

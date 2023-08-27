@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserInterface } from '../admin/users-dashboard/users-dashboard.component';
+import { UserInterface } from '../admin/users-admin/users-dashboard/users-dashboard.component';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class AdminService {
   }
   
   public getProduits():Observable<any>{
-    return this.http.get<any>(`${environment.APISPRING}produit/page/0`);
+    return this.http.get<any>(`${environment.APISPRING}produits/page/0`);
   }
 
   public getUsersAtPage(page : number):Observable<any>{
@@ -24,7 +24,7 @@ export class AdminService {
   }
 
   public getProduitAtPage(page:number):Observable<any>{
-    return this.http.get<any>(`${environment.APISPRING}produit/page/${page}`)
+    return this.http.get<any>(`${environment.APISPRING}produits/page/${page}`)
   }
 }
 

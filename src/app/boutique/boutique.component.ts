@@ -21,9 +21,7 @@ export class BoutiqueComponent implements OnInit{
     { checked: false, label: 'speaker' }
   ]
 
-  constructor(private router :Router, private produitService : ProductsService,private adminService:AdminService ){
-   
-  }
+  constructor(private router :Router, private produitService : ProductsService,private adminService:AdminService ){}
  
 
   ngOnInit() {
@@ -36,7 +34,7 @@ export class BoutiqueComponent implements OnInit{
     this.produitService.getProduits().subscribe(
       (data:product[]) => {
         this.products = data.slice(0,6);
-        console.log(this.products)
+        // console.log(this.products)
         this.isLoading=false
       },
       (error: any) => {
@@ -82,7 +80,6 @@ export class BoutiqueComponent implements OnInit{
     } 
     this.adminService.getProduitAtPage(page).subscribe((data)=>{
       if(data.content.length==0){return}
-      // console.log(data.content)
       this.products=data.content
       this.isLoading=false
       this.page=page
