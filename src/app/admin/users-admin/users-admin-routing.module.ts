@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path:'adduser',
-    component:AddUserComponent
+    component:AddUserComponent,
   },
   {
     path:'updateuser/:id',

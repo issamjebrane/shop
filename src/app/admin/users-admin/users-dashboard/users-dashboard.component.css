@@ -2,7 +2,7 @@
   margin-top: 30px;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 10px;
   width: 100%;
 }
 .button{
@@ -46,8 +46,7 @@
   width: 100%;
 }
 td,th{
-  padding: 30px 40px;
-  padding-left: 15px;
+  padding: 10px 15px;
   border-bottom: 2px solid #D8D8EE;
   font-family: Outfit;
 }
@@ -58,16 +57,69 @@ th{
 }
 td{
   color: #000;
-  font-weight:400;
+  font-weight:100;
 }
 
 th:last-child, td:last-child{
   text-align: center;
 }
+
+td:last-child{
+  position: relative;
+}
+
+td:last-child span{
+  cursor: pointer;
+  text-align: center;
+}
+.hide{
+  display: none;
+}
+.dropdown-menu{
+  position: absolute;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 5px;
+  gap: 10px;
+}
 .navigation{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-width: 100%;
+  width: 100%;
   padding: 20px 30px;
+  position: absolute;
+  bottom: 0;
+}
+
+.pagination{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pages{
+  border-radius: 2px;
+  border: 1px solid var(--light-border-light, #DFDFDF);
+  background: var(--light-border-light, #DFDFDF);
+  width: 19.921px;
+  height: 28px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.5s ease-in;
+}
+.pages:hover{
+  background-color: #d3c9c9;
+}
+.pages svg{
+  width: 10.625px;
+  height: 14.933px;
+}
+
+@media (max-width:1400px) {
+  td,th{
+    padding: 10px 5px;
+  }
 }

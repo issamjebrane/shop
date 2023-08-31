@@ -1,1 +1,46 @@
-<p>add-user works!</p>
+<div class="main">
+    <h1 class="header">Add User</h1>
+    <form  [formGroup]="addForm" class="m-4 ">
+        <div class="row">
+
+            <div class="col">
+                <div class="mb-2">
+                    <label for="firstName" class="form-label">first name:</label>
+                    <input type="text" class="form-control" placeholder="first name" name="firstName" formControlName="nom">
+                </div>
+                <div class="mb-2">
+                    <label for="lastName" class="form-label">last name:</label>
+                    <input type="text" class="form-control" placeholder="last name" name="lastName" formControlName="prenom">
+                </div>
+                <div class="mb-2">
+                    <label for="address" class="form-label">address:</label>
+                    <input type="text" class="form-control" placeholder="address" name="address" formControlName="adresse">
+                </div>
+                <div class="mb-2">
+                    <label for="ville" class="form-label">City:</label>
+                    <input type="text" class="form-control" placeholder="city" name="ville" formControlName="ville">
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-2">
+                    <label for="Email" class="form-label">email:</label>
+                    <input type="email" class="form-control" placeholder="email" formControlName="email">
+                </div>
+                <div class="mb-2">
+                    <label for="password" class="form-label">passowrd:</label>
+                    <input type="text" class="form-control" placeholder="password" formControlName="password">
+                </div>
+                <div class="mb-2">
+                    <label for="num_tel" class="form-label">number:</label>
+                    <input type="number" class="form-control" placeholder="number" formControlName="num_tel" name="num_tel">
+                </div>
+            </div>
+            <div class="mb-2">
+                <label for="is_admin" class="form-check-label">admin? :</label>
+                <input type="checkbox" class="form-check-input"  formControlName="is_admin" name="is_admin">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!addForm.valid" (click)="addUser()">Submit</button>
+
+    </form>
+</div>

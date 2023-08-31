@@ -33,8 +33,8 @@ export class UsersService {
     const userdata = {id:user.id,nom:user.nom,prenom : user.prenom,isAdmin:user.isAdmin}
     this.authservice.setUser(userdata)
   }
-  getUser():users{
-    return this.user
+  getUser(id:number){
+    return this.http.get(`${environment}users/getuser/${id}`)
   }
 
   register(value:users):Observable<any>{

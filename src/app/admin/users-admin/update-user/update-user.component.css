@@ -1,0 +1,22 @@
+.main{
+    margin-top: 20px;
+}
+.header{
+    color: #000;
+    font-family: Outfit;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-left: 20px;
+}
+
+label{
+    color: #03008D;
+    font-family: Outfit;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 95%; /* 19px */
+    text-transform: uppercase;
+}

@@ -15,6 +15,8 @@ export class ProduitDashboardComponent implements OnInit{
   products:product[]=[];
   page:number=0;
   keys:string[]=[];
+  numberOfElements:number=6
+  entries:number=0;
   constructor(private adminService : AdminService,private route:Router){}
 
   ngOnInit(): void {
@@ -27,9 +29,9 @@ export class ProduitDashboardComponent implements OnInit{
 
   getAllProduit(){
     this.adminService.getProduits().subscribe(response=>{
-      this.products=response.content
+      this.products=response.slice(0,6)
       this.keys=Object.keys(this.products[0]);
-      console.log(this.keys)
+      this.entries=response.length
     });
   }
 
@@ -41,6 +43,7 @@ export class ProduitDashboardComponent implements OnInit{
       if(data.content.length === 0){return }
       this.products=data.content
       this.page=page
+      this.numberOfElements=data.numberOfElements
     })
   }
 }

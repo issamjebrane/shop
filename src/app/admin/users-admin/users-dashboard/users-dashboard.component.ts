@@ -15,6 +15,7 @@ export interface UserInterface{
   password:string;
   is_admin?:boolean ;
   isAdmin?:boolean;
+  dropdown:boolean;
 }
 
 @Component({
@@ -29,6 +30,8 @@ export class UsersDashboardComponent implements OnInit{
   users:UserInterface[]=[];
   keys:string[]=[];
   page:number=0
+  numberOfElements:number=6
+  entries:number=0;
   constructor(private adminService : AdminService,private route:Router){
     
   }
@@ -40,11 +43,16 @@ export class UsersDashboardComponent implements OnInit{
     this.route.navigate(['admin/users/adduser'])
   }
 
+
   public getUsers(){
     this.adminService.getUsers().subscribe((response:UserInterface[])=>{
       this.users=response.slice(0,6)
       this.keys=Object.keys(this.users[0]);
       this.keys.pop();
+      this.users.forEach(user => {
+        user.dropdown=true
+      });
+      this.entries=response.length
     },(error)=>{
       console.log("error fetching data")
     });
@@ -55,10 +63,29 @@ export class UsersDashboardComponent implements OnInit{
     } 
     this.adminService.getUsersAtPage(page).subscribe((data)=>{
       if(data.content.length === 0){return }
-     this.users =data.content
-     this.page=page
+    this.users =data.content
+    this.page=page
+    this.numberOfElements=data.numberOfElements
+    this.users.forEach(user => {
+      user.dropdown=true
+    });
     })
   }
 
+  showDropdown(user:UserInterface){
+    user.dropdown=!user.dropdown
+  }
 
+  deleteUser(id:number){
+    this.adminService.deleteUser(id).subscribe(response=>{
+      if(response==="deleted"){
+        this.getToPage(1)
+      }
+    },error=>{
+      console.log(error)
+    })
+  }
+  updateUser(id:number){
+    this.route.navigate([`/admin/users/updateuser/${id}`])
+  }
 }

@@ -13,6 +13,7 @@
             <thead>
                 <tr>
                     <th *ngFor="let key of keys" scope="col">{{key}}</th>
+                    <th>action</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,37 +24,27 @@
                     <td>{{product.description}}</td>
                     <td>{{product.prix}}</td>
                     <td>{{product.image}}</td>
+                    <td >...</td>
                 </tr>
             </tbody>
         </table>
     </div>
     <div class="navigation">
         <span>
-            Showing 1 to 10 of 50 entries
+            Showing 1 to {{numberOfElements}} of {{entries}} entries
         </span>
         <div class="pagination">
-            <div class="pages"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="16" viewBox="0 0 11 16" fill="none">
+            <div class="pages" (click)="getToPage(page-1)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="16" viewBox="0 0 11 16" fill="none">
                 <path d="M6.93408 11.7333L4.27791 8L6.93408 4.26666" stroke="#343A40" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg></div>
-            <span>1</span>
-            <div class="pages"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="16" viewBox="0 0 11 16" fill="none">
+                </svg>
+            </div>
+            <span>{{page + 1}}</span>
+            <div class="pages" (click)="getToPage(page+1)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="16" viewBox="0 0 11 16" fill="none">
                 <path d="M4.08691 11.7333L6.7431 8L4.08691 4.26666" stroke="#343A40" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg></div>
+                </svg>
+            </div>
         </div>
-        <!-- <nav aria-label="Page navigation" class="last-item ">
-            <ul class="pagination justify-content-center ">
-                <li class="page-item">
-                    <a class="page-link text-black" href="javascript:;" aria-label="Previous" (click)="getToPage(page-1)">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item" ><a class="page-link text-black disabled" href="javascript:;" >{{page + 1}}</a></li>
-                <li class="page-item" >
-                    <a class="page-link text-black" href="javascript:;" aria-label="Next" (click)="getToPage(page+1)">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav> -->
-        </div>
+    </div>
 </div>

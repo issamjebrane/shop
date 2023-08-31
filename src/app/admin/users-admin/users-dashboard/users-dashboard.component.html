@@ -31,32 +31,48 @@
                     <td>{{user.password}}</td>
                     <td>{{user.numTel}}</td>
                     <td>{{user.isAdmin}}</td>
-                    <td>...</td>
+                    <td>
+                        <span class="dropdown-toggle caret btn btn-custom" (click)="showDropdown(user)">action</span>
+                        <ul [ngClass]="{'dropdown-menu':true,'d-none':user.dropdown}">
+                            <li style="cursor: pointer;" (click)="updateUser(user.id)">
+                                <a class="dropdown-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 54 54" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9066 45.3999L51.1866 14.1199C53.3269 12.1256 54.2079 9.12202 53.484 6.28753C52.7601 3.45304 50.5468 1.23972 47.7123 0.515837C44.8778 -0.208042 41.8742 0.672982 39.8799 2.81328L8.51989 34.1733C8.31932 34.3795 8.14876 34.6129 8.01323 34.8666L0.599893 49.8266C0.194502 50.654 0.244913 51.632 0.733222 52.4133C1.22153 53.1946 2.07855 53.6685 2.99989 53.6666C3.43988 53.6563 3.87046 53.5372 4.25323 53.32L19.2132 45.9066C19.467 45.7711 19.7004 45.6005 19.9066 45.3999ZM50.9999 53.6666C52.4727 53.6666 53.6666 52.4727 53.6666 51C53.6666 49.5272 52.4727 48.3333 50.9999 48.3333H26.9999C25.5271 48.3333 24.3332 49.5272 24.3332 51C24.3332 52.4727 25.5271 53.6666 26.9999 53.6666H50.9999ZM38.5199 19.2399L34.7599 15.4799L12.6799 37.6666L8.97323 45.1333L16.3332 41.32L38.5199 19.2399ZM45.5732 5.66328C46.3042 5.66328 47.0031 5.96333 47.5066 6.49328C48.0262 7.00762 48.3119 7.71278 48.2968 8.44379C48.2817 9.17481 47.9671 9.86755 47.4266 10.3599L42.2799 15.4799L38.5199 11.7199L43.6399 6.49328C44.1433 5.96333 44.8423 5.66328 45.5732 5.66328Z" fill="#231F20"/>
+                                    </svg>
+                                    update
+                                </a>
+                             </li>
+                            <li (click)="deleteUser(user.id)" style="cursor: pointer;">
+                                <a class="dropdown-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 54 54" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M45.6667 0.333374H8.33337C3.9151 0.333374 0.333374 3.9151 0.333374 8.33337V13.6667C0.333374 15.1395 1.52728 16.3334 3.00004 16.3334H5.66671V45.6667C5.66671 50.085 9.24843 53.6667 13.6667 53.6667H40.3334C44.7517 53.6667 48.3334 50.085 48.3334 45.6667V16.3334H51C52.4728 16.3334 53.6667 15.1395 53.6667 13.6667V8.33337C53.6667 3.9151 50.085 0.333374 45.6667 0.333374ZM43 45.6667C43 47.1395 41.8061 48.3334 40.3334 48.3334H13.6667C12.1939 48.3334 11 47.1395 11 45.6667V16.3334H43V45.6667ZM5.66671 11H48.3334V8.33337C48.3334 6.86061 47.1395 5.66671 45.6667 5.66671H8.33337C6.86061 5.66671 5.66671 6.86061 5.66671 8.33337V11ZM16.3334 40.3334V24.3334C16.3334 22.8606 17.5273 21.6667 19 21.6667C20.4728 21.6667 21.6667 22.8606 21.6667 24.3334V40.3334C21.6667 41.8061 20.4728 43 19 43C17.5273 43 16.3334 41.8061 16.3334 40.3334ZM32.3334 24.3334V40.3334C32.3334 41.8061 33.5273 43 35 43C36.4728 43 37.6667 41.8061 37.6667 40.3334V24.3334C37.6667 22.8606 36.4728 21.6667 35 21.6667C33.5273 21.6667 32.3334 22.8606 32.3334 24.3334Z" fill="#231F20"/>
+                                    </svg>
+                                    delete
+                                </a>
+                            </li>
+                        </ul>
+                    </td>
                 </tr>
+                
             </tbody>
         </table>
     </div>
     <div class="navigation">
         <span>
-            Showing 1 to 10 of 50 entries
+            Showing 1 to {{numberOfElements}} of {{entries}} entries
         </span>
-        <div>
-            hello
+        <div class="pagination">
+            <div class="pages" (click)="getToPage(page-1)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="16" viewBox="0 0 11 16" fill="none">
+                <path d="M6.93408 11.7333L4.27791 8L6.93408 4.26666" stroke="#343A40" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <span>{{page + 1}}</span>
+            <div class="pages" (click)="getToPage(page+1)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="16" viewBox="0 0 11 16" fill="none">
+                <path d="M4.08691 11.7333L6.7431 8L4.08691 4.26666" stroke="#343A40" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
         </div>
-        <!-- <nav aria-label="Page navigation" class="last-item ">
-            <ul class="pagination justify-content-center ">
-                <li class="page-item">
-                    <a class="page-link text-black" href="javascript:;" aria-label="Previous" (click)="getToPage(page-1)">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item" ><a class="page-link text-black disabled" href="javascript:;" >{{page + 1}}</a></li>
-                <li class="page-item" >
-                    <a class="page-link text-black" href="javascript:;" aria-label="Next" (click)="getToPage(page+1)">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav> -->
     </div>
 </div>

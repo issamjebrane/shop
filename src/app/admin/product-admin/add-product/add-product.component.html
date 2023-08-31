@@ -1,1 +1,30 @@
-<p>add-product works!</p>
+<div class="main">
+    <h1 class="header">Add Product</h1>
+    <form  [formGroup]="addForm" class="m-4">
+        <div class="mb-3">
+            <label for="reference" class="form-label">reference:</label>
+            <input type="text" class="form-control" placeholder="reference" name="reference" formControlName="ref">
+        </div>
+        <div class="mb-3">
+            <label for="type" class="form-label">type:</label>
+            <select name="type" class="form-select" formControlName="type">
+                <option value="phone" >phone</option>
+                <option value="tv">tv</option>
+                <option value="speaker">speaker</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">description:</label>
+            <input type="text" class="form-control" placeholder="description" name="type" formControlName="description">
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">price:</label>
+            <input type="number" class="form-control" placeholder="price" formControlName="prix">
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">product's image:</label>
+            <input type="file" class="form-control" name="image" id="" formControlName="image">
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!addForm.valid" (click)="addProduct()">Submit</button>
+    </form>
+</div>

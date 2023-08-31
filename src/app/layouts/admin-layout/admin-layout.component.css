@@ -1,5 +1,4 @@
-.wrapper{
-}
+
 .admin-dashboard-header{
     display: flex;
     justify-content: space-between;
@@ -33,9 +32,9 @@
     min-width: 100%;
     height: calc(100vh - 81.6px);
     gap: 5px;
-    overflow: hidden;
 }
 
 .container-content{
     width: 100%;
+    position: relative;
 }
